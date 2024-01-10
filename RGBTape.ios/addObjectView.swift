@@ -11,20 +11,6 @@ struct addObjectView: View {
     
     @Environment(\.presentationMode) var presentationMode
 
-    @State private var arduinoObjectsDefaults: [arduinoObject] = {
-        // Ключ для UserDefaults
-        let key = "arduinoObjectsKey"
-        
-        // Получение данных из UserDefaults
-        if let savedData = UserDefaults.standard.data(forKey: key) {
-            // Декодирование данных в массив объектов
-            if let loadedObjects = try? JSONDecoder().decode([arduinoObject].self, from: savedData) {
-                return loadedObjects
-            }
-        }
-        return []
-    }()
-    
     func saveArduinoObjects(_ objects: [arduinoObject]) {
         if let encodedData = try? JSONEncoder().encode(objects) {
             UserDefaults.standard.set(encodedData, forKey: "arduinoObjectsKey")

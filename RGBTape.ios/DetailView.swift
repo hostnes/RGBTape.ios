@@ -15,46 +15,46 @@ struct DetailView: View {
     
     @State private var showActionSheet = false
 
-    
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             Text(object.name)
                 .font(.largeTitle)
                 .foregroundColor(.blue)
+                .padding()
             Form {
-                HStack {
-                    Text("IPAddress")
-                        .foregroundColor(.gray)
-                    TextField("Red Pin", text: $ipAddress)
-                        .padding()
+                List {
+                    Section(header: Text("About")) {
+                        DisclosureGroup("Application Info") {
+                            VStack(alignment: .leading, spacing: 15) {
+                                AboutItemView(title: "IPAddress", value: ipAddress)
+                                AboutItemView(title: "RedPin", value: redPin)
+                                AboutItemView(title: "GreenPin", value: greenPin)
+                                AboutItemView(title: "BluePin", value: bluePin)
+                            }
+                        }
+                    }
                 }
-                HStack {
-                    Text("RedPin     ")
-                        .foregroundColor(.gray)
-                    TextField("Red Pin", text: $redPin)
-                        .padding()
+                Toggle(isOn: $redToggle) {
+                    Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.red)
+                }.padding(.vertical, 10).padding(.horizontal, 20)
+                .onChange(of: redToggle) { _ in
+                    object.red = redToggle
+                    viewModel.saveArduinoObjects()
                 }
-                HStack {
-                    Text("GreenPin  ")
-                        .foregroundColor(.gray)
-                    TextField("Green Pin", text: $greenPin)
-                        .padding()
+                Toggle(isOn: $greenToggle) {
+                    Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.green)
+                }.padding(.vertical, 10).padding(.horizontal, 20)
+                .onChange(of: greenToggle) { _ in
+                    object.green = greenToggle
+                    viewModel.saveArduinoObjects()
                 }
-                HStack {
-                    Text("BuePin      ")
-                        .foregroundColor(.gray)
-                    TextField("Green Pin", text: $bluePin)
-                        .padding()
+                Toggle(isOn: $blueToggle) {
+                    Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.blue)
+                }.padding(.vertical, 10).padding(.horizontal, 20)
+                .onChange(of: blueToggle) { _ in
+                    object.blue = blueToggle
+                    viewModel.saveArduinoObjects()
                 }
-                    Toggle(isOn: $redToggle) {
-                        Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.red)
-                    }.padding(.vertical, 10).padding(.horizontal, 20)
-                    Toggle(isOn: $greenToggle) {
-                        Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.green)
-                    }.padding(.vertical, 10).padding(.horizontal, 20)
-                    Toggle(isOn: $blueToggle) {
-                        Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.blue)
-                    }.padding(.vertical, 10).padding(.horizontal, 20)
                 Section {
                     HStack {
                         Spacer()
@@ -84,6 +84,10 @@ struct DetailView: View {
                     .frame(width: 20, height: 20)
                 
                 Slider(value: $sliderValue, in: 0...100)
+                    .onChange(of: sliderValue) { _ in
+                        object.brightness = sliderValue
+                        viewModel.saveArduinoObjects()
+                    }
                 Image(systemName: "sun.max.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -103,6 +107,22 @@ struct DetailView: View {
             blueToggle = object.blue
             bluePin = object.bluePin
         }
+    }
+}
+
+struct AboutItemView: View {
+    var title: String
+    var value: String
+
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(.headline)
+                .foregroundColor(.secondary)
+            Spacer()
+            Text(value)
+        }
+        .padding(.vertical, 5)
     }
 }
 

@@ -14,16 +14,6 @@ struct MainView: View {
             blue: true,
             bluePin: "17")
     ]
-    @State var arduinoObjectsDefaults: [arduinoObject] = {
-        let key = "arduinoObjectsKey"
-        
-        if let savedData = UserDefaults.standard.data(forKey: key) {
-            if let loadedObjects = try? JSONDecoder().decode([arduinoObject].self, from: savedData) {
-                return loadedObjects
-            }
-        }
-        return []
-    }()
     var body: some View {
         NavigationView {
             Form {
@@ -37,8 +27,8 @@ struct MainView: View {
                                 .background(Color.black)
                                 .cornerRadius(10)
                                 .buttonStyle(.borderedProminent)
-                        }
-                    )
+                        } 
+                    ) 
                 }
             }
             .navigationTitle("Title")
