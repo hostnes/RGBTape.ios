@@ -9,16 +9,22 @@
 /* Begin PBXBuildFile section */
 		5BCC57A12B4EF6440059DB9E /* RGBTape_iosApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57A02B4EF6440059DB9E /* RGBTape_iosApp.swift */; };
 		5BCC57A32B4EF6440059DB9E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57A22B4EF6440059DB9E /* ContentView.swift */; };
-		5BCC57A52B4EF6460059DB9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC57A42B4EF6460059DB9E /* Assets.xcassets */; };
-		5BCC57A82B4EF6460059DB9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BCC57A72B4EF6460059DB9E /* Preview Assets.xcassets */; };
+		5BCC57AF2B4EF7E90059DB9E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57AE2B4EF7E90059DB9E /* MainView.swift */; };
+		5BCC57B12B4EF8390059DB9E /* ArduinoObjectsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57B02B4EF8390059DB9E /* ArduinoObjectsViewModel.swift */; };
+		5BCC57B32B4EF86A0059DB9E /* arduinoObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57B22B4EF86A0059DB9E /* arduinoObject.swift */; };
+		5BCC57B52B4EF8B00059DB9E /* addObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57B42B4EF8AF0059DB9E /* addObjectView.swift */; };
+		5BCC57B72B4EF8CE0059DB9E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BCC57B62B4EF8CE0059DB9E /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5BCC579D2B4EF6440059DB9E /* RGBTape.ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGBTape.ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BCC57A02B4EF6440059DB9E /* RGBTape_iosApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBTape_iosApp.swift; sourceTree = "<group>"; };
 		5BCC57A22B4EF6440059DB9E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5BCC57A42B4EF6460059DB9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5BCC57A72B4EF6460059DB9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5BCC57AE2B4EF7E90059DB9E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5BCC57B02B4EF8390059DB9E /* ArduinoObjectsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArduinoObjectsViewModel.swift; sourceTree = "<group>"; };
+		5BCC57B22B4EF86A0059DB9E /* arduinoObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arduinoObject.swift; sourceTree = "<group>"; };
+		5BCC57B42B4EF8AF0059DB9E /* addObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addObjectView.swift; sourceTree = "<group>"; };
+		5BCC57B62B4EF8CE0059DB9E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,8 +41,8 @@
 		5BCC57942B4EF6440059DB9E = {
 			isa = PBXGroup;
 			children = (
-				5BCC579F2B4EF6440059DB9E /* RGBTape.ios */,
 				5BCC579E2B4EF6440059DB9E /* Products */,
+				5BCC579F2B4EF6440059DB9E /* RGBTape.ios */,
 			);
 			sourceTree = "<group>";
 		};
@@ -53,18 +59,13 @@
 			children = (
 				5BCC57A02B4EF6440059DB9E /* RGBTape_iosApp.swift */,
 				5BCC57A22B4EF6440059DB9E /* ContentView.swift */,
-				5BCC57A42B4EF6460059DB9E /* Assets.xcassets */,
-				5BCC57A62B4EF6460059DB9E /* Preview Content */,
+				5BCC57AE2B4EF7E90059DB9E /* MainView.swift */,
+				5BCC57B02B4EF8390059DB9E /* ArduinoObjectsViewModel.swift */,
+				5BCC57B22B4EF86A0059DB9E /* arduinoObject.swift */,
+				5BCC57B42B4EF8AF0059DB9E /* addObjectView.swift */,
+				5BCC57B62B4EF8CE0059DB9E /* DetailView.swift */,
 			);
 			path = RGBTape.ios;
-			sourceTree = "<group>";
-		};
-		5BCC57A62B4EF6460059DB9E /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				5BCC57A72B4EF6460059DB9E /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +126,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BCC57A82B4EF6460059DB9E /* Preview Assets.xcassets in Resources */,
-				5BCC57A52B4EF6460059DB9E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +136,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BCC57B32B4EF86A0059DB9E /* arduinoObject.swift in Sources */,
+				5BCC57B52B4EF8B00059DB9E /* addObjectView.swift in Sources */,
+				5BCC57B12B4EF8390059DB9E /* ArduinoObjectsViewModel.swift in Sources */,
+				5BCC57B72B4EF8CE0059DB9E /* DetailView.swift in Sources */,
 				5BCC57A32B4EF6440059DB9E /* ContentView.swift in Sources */,
+				5BCC57AF2B4EF7E90059DB9E /* MainView.swift in Sources */,
 				5BCC57A12B4EF6440059DB9E /* RGBTape_iosApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
