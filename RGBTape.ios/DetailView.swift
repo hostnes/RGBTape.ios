@@ -14,6 +14,18 @@ struct DetailView: View {
     @State public var bluePin: String = ""
     
     @State private var showActionSheet = false
+    
+    func sendRequest() {
+        let url = URL(string: "http://\(ipAddress)/color?red=\(redToggle)&green=\(greenToggle)&blue=\(blueToggle)")!
+        print(url)
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: request) { _, _, _ in
+            
+        }
+
+        task.resume()
+    }
 
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
@@ -40,6 +52,7 @@ struct DetailView: View {
                 .onChange(of: redToggle) { _ in
                     object.red = redToggle
                     viewModel.saveArduinoObjects()
+                    sendRequest()
                 }
                 Toggle(isOn: $greenToggle) {
                     Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.green)
@@ -47,6 +60,7 @@ struct DetailView: View {
                 .onChange(of: greenToggle) { _ in
                     object.green = greenToggle
                     viewModel.saveArduinoObjects()
+                    sendRequest()
                 }
                 Toggle(isOn: $blueToggle) {
                     Rectangle().frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 50).foregroundColor(Color.blue)
@@ -54,6 +68,7 @@ struct DetailView: View {
                 .onChange(of: blueToggle) { _ in
                     object.blue = blueToggle
                     viewModel.saveArduinoObjects()
+                    sendRequest()
                 }
                 Section {
                     HStack {

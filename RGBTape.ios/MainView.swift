@@ -17,18 +17,27 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             Form {
-                ForEach(viewModel.arduinoObjectsDefaults.indices, id: \.self) { index in
-                    NavigationLink(
-                        destination: DetailView(viewModel: viewModel, object: viewModel.arduinoObjectsDefaults[index]),
-                        label: {
-                            Text(viewModel.arduinoObjectsDefaults[index].name)
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.black)
-                                .cornerRadius(10)
-                                .buttonStyle(.borderedProminent)
-                        } 
-                    ) 
+                if viewModel.arduinoObjectsDefaults.count != 0 {
+                    ForEach(viewModel.arduinoObjectsDefaults.indices, id: \.self) { index in
+                        NavigationLink(
+                            destination: DetailView(viewModel: viewModel, object: viewModel.arduinoObjectsDefaults[index]),
+                            label: {
+                                Text(viewModel.arduinoObjectsDefaults[index].name)
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.black)
+                                    .cornerRadius(10)
+                                    .buttonStyle(.borderedProminent)
+                            }
+                        )
+                    }
+                }
+                else {
+                    HStack {
+                        Spacer()
+                        Text("Empty List").font(.system(size: 20))
+                        Spacer()
+                    }
                 }
             }
             .navigationTitle("Title")
