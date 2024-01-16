@@ -16,8 +16,7 @@ struct DetailView: View {
     @State private var showActionSheet = false
     
     func sendRequest() {
-        let url = URL(string: "http://\(ipAddress)/color?red=\(redToggle)&green=\(greenToggle)&blue=\(blueToggle)")!
-        print(url)
+        let url = URL(string: "http://\(ipAddress)/color?red=\(redToggle)&green=\(greenToggle)&blue=\(blueToggle)&brightness=\(sliderValue)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: request) { _, _, _ in
@@ -98,10 +97,11 @@ struct DetailView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 20, height: 20)
                 
-                Slider(value: $sliderValue, in: 0...100)
+                Slider(value: $sliderValue, in: 0...255)
                     .onChange(of: sliderValue) { _ in
                         object.brightness = sliderValue
                         viewModel.saveArduinoObjects()
+                        sendRequest()
                     }
                 Image(systemName: "sun.max.fill")
                     .resizable()
